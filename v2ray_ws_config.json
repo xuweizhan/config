@@ -1,0 +1,63 @@
+{
+    "log": {
+        "loglevel": "warning",
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log"
+    },
+    "inbounds": [
+        {
+            "port": 40396,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "{{UUID}}",
+                        "level": 0,
+                        "alterId": 64
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "wsSettings": {
+                    "path": "/api_vp"
+                }
+            }
+        },
+        {
+            "port": 40397,
+            "protocol": "vmess",
+            "settings": {
+              "clients": [
+                {
+                  "id": "{{UUID}}",
+                  "level": 0,
+                  "alterId": 64
+                }
+              ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "settings": {}
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "blocked"
+            }
+        ]
+    }
+}
