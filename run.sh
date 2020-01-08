@@ -1,7 +1,10 @@
 #!/bin/sh
-
+# docker run -it --name=test -p 8080:80 -p 4443:443 debian /bin/bash
+# https://xuweizhan.github.io/config/run.sh
+# curl -L -o /home https://xuweizhan.github.io/config/run.sh
 V2RAYCONFIG="/v2ray/config.json"
 CADDYFILE="/v2ray/Caddyfile"
+
 # 调用报错
 function warn() {
   echo -e "\033[31m$1\033[0m$2"
@@ -20,7 +23,6 @@ getV2ray() {
     /tmp/go.sh
     # 生成UUID
     UUID=/proc/sys/kernel/random/uuid
-    warn "UUID：`cat /v2ray/uuid`"
     # 生成配置文件
     cat >$V2RAYCONFIG <<EOF
     {
@@ -56,6 +58,7 @@ EOF
     }
 EOF
     v2ray -config=$V2RAYCONFIG
+    warn `cat data/uuid`
 }
 
 # 安装Caddy

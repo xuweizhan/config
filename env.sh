@@ -12,7 +12,6 @@ main(){
 main
 
 
-
 # 判断是否指定了domain来进行config配置
 if [ ! $DOMAIN ]; then
 echo "未设置环境变量domain[DOMAIN]，无法进行https安装，将只安装V2ray"
