@@ -2,6 +2,7 @@
 # docker run -it --name=test -p 8080:80 -p 4443:443 debian /bin/bash
 # https://xuweizhan.github.io/config/run.sh
 # curl -L -o /home https://xuweizhan.github.io/config/run.sh
+# git clone https://github.com/xuweizhan/config.git
 V2RAYCONFIG="/v2ray/config.json"
 CADDYFILE="/v2ray/Caddyfile"
 
@@ -35,7 +36,7 @@ getV2ray() {
             "clients": [
                 {
 EOF
-    echo "\"id\": \"$(cat uuid)\"," >>$V2RAYCONFIG
+    echo "\"id\": \"$UUID\"," >>$V2RAYCONFIG
     cat >>$V2RAYCONFIG <<EOF
                 "alterId": 64
                 }
