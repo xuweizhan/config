@@ -5,6 +5,7 @@
 # git clone https://github.com/xuweizhan/config.git
 V2RAYCONFIG="/v2ray/config.json"
 CADDYFILE="/v2ray/Caddyfile"
+# chmod +x ./run.sh & ./run.sh
 
 # 调用报错
 function warn() {
@@ -67,8 +68,9 @@ getCaddy() {
     curl -o caddy.tar.gz 'https://caddyserver.com/download/linux/amd64?license=personal&telemetry=off'
     tar -zxvf caddy.tar.gz caddy
     chmod +x ./caddy
-    echo "请输入domain"
+    echo "请输入domain："
     read DOMAIN
+    echo $DOMAIN
     $DOMAIN >$CADDYFILE
     cat >>$CADDYFILE <<EOF
     {
@@ -80,8 +82,9 @@ getCaddy() {
         }
     }
 EOF
-    echo "请输入mail"
+    echo "请输入mail："
     read MAIL
+    echo $MAIL
     # 读取域名和email
     caddy -conf=$CADDYFILE -email=$MAIL -agree
 }
