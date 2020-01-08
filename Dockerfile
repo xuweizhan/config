@@ -12,8 +12,7 @@ RUN curl -L -o /tmp/go.sh https://install.direct/go.sh
 RUN chmod +x /tmp/go.sh
 RUN /tmp/go.sh
 
-# nginx
-RUN apt install nginx
+
 
 # 执行判断脚本， 更新配置文件
 RUN curl -L -o /tmp/env.sh https://xuweizhan.github.io/config/env.sh
